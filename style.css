@@ -1,4 +1,6 @@
-body {}
+body {
+  width: 475px;
+}
 
 @keyframes blinking {
   0% {
