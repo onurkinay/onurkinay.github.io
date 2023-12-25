@@ -16,21 +16,12 @@ function basla() {
 document.body.addEventListener("click", function (evt) {
   if (turSayisi < 3 && !donuyor && turSayisi > 0) {
     if (evt.target.className === "zar" && evt.target.parentNode.className === "zarlar") {
-      const box6 = document.createElement("div");
-      box6.id = evt.target.id;
-      box6.classList.add(evt.target.classList);
-      document.getElementById("playerBoard").appendChild(box6);
+      evt.target.classList.add("selectedZar");
 
-      evt.target.parentNode.removeChild(evt.target);
-    } else if (evt.target.className === "zar" && evt.target.parentNode.id === "playerBoard") {
-      const box6 = document.createElement("div");
-      box6.id = evt.target.id;
-      box6.classList.add(evt.target.classList);
-      document.getElementById("donecekZar").appendChild(box6);
-
-      evt.target.parentNode.removeChild(evt.target);
+    } else if (evt.target.classList.contains("zar") && evt.target.classList.contains("selectedZar")) {
+      evt.target.classList.remove("selectedZar");
     }
-    if (document.getElementById("playerBoard").querySelectorAll(".zar").length === 5) {
+    if (document.querySelectorAll(".selectedZar").length === 5) {
 
       document.body.querySelector(".rollDice").disabled = true;
     } else {
@@ -58,8 +49,8 @@ document.querySelectorAll("td").forEach((cell) => {
         cell.classList.add("selected");
         totalHesaplama(oyuncu);
 
-        document.getElementById("playerBoard").querySelectorAll(".zar").forEach((zar) => {
-          document.getElementById("donecekZar").appendChild(zar);
+        document.getElementById("donecekZar").querySelectorAll(".zar").forEach((zar) => {
+          zar.classList.remove("selectedZar");
         });
 
         for (let i = 1; i <= 6; i++) {
@@ -130,7 +121,8 @@ document.body.querySelector(".rollDice").addEventListener("click", function (evt
   (function () {//zarların dönmesini sağlar
     const collection = document.getElementsByClassName("zarlar")[0].getElementsByClassName("zar");
     for (i = 0; i < collection.length; i++) {
-      collection[i].id = "zar" + (Math.floor(Math.random() * 6) + 1);
+      if (!collection[i].classList.contains("selectedZar"))
+        collection[i].id = "zar" + (Math.floor(Math.random() * 6) + 1);
     }
     count++;
     if (count == 25) {
@@ -143,7 +135,7 @@ document.body.querySelector(".rollDice").addEventListener("click", function (evt
         evt.target.disabled = true;
         donuyor = true;
         document.getElementById("donecekZar").querySelectorAll(".zar").forEach((zar) => {
-          document.getElementById("playerBoard").appendChild(zar);
+          zar.classList.add("selectedZar");
         });
       }
 
