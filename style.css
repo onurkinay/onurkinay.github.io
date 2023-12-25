@@ -1,6 +1,4 @@
-body {
-  width: max-content;
-}
+body {}
 
 @keyframes blinking {
   0% {
@@ -20,7 +18,9 @@ body {
 #centerBox {
   position: absolute;
   top: 50%;
+  left: 50%;
   margin-top: -150px;
+  margin-left: -225px;
   width: 450px;
   height: 300px;
   background-color: white;
