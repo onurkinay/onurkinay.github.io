@@ -84,11 +84,11 @@ body {}
 
 .zar {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   background-repeat: no-repeat;
-  background-size: 100px 100px;
-  padding: 10px;
+  background-size: 75px 75px;
+  padding: 0 10px;
 }
 
 .selectedZar {
@@ -96,13 +96,15 @@ body {}
 }
 
 .zarlar {
-  width: 600px;
-  height: 110px;
+  width: 475px;
+  height: 75px;
   background-color: turquoise;
   padding: 10px;
 }
 
-.tablo {}
+.tablo {
+  margin-top: 10px
+}
 
 .tablo td {
   background-color: red;
@@ -128,7 +130,6 @@ body {}
 }
 
 button.rollDice {
-  width: 100%;
   padding: 10px;
   margin: 10px;
 }
